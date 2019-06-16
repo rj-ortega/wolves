@@ -1,12 +1,20 @@
-require 'ruby2d'
+require "ruby2d"
+require_relative "./character.rb"
 
-set title: "Hello Triangle"
+set background: "olive"
 
-Triangle.new(
-  x1: 320, y1:  50,
-  x2: 540, y2: 430,
-  x3: 100, y3: 430,
-  color: ['red', 'green', 'blue']
-)
+wolf = Character.new("./sprites/wolf.png",
+                     clip_width: 30,
+                     x: 100)
+archer = Character.new("./sprites/wolf.png",
+                       clip_width: 32,
+                       time: 200,
+                       x: 50)
+rifleman = Character.new("./sprites/rifleman_old.png",
+                         clip_width: 22)
+
+archer.play
+rifleman.play
+wolf.play
 
 show
