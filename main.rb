@@ -1,20 +1,8 @@
 require "ruby2d"
 require_relative "./character.rb"
+require_relative "./game.rb"
 
-set background: "olive"
+BACKGROUND = "olive"
 
-wolf = Character.new("./sprites/wolf.png",
-                     clip_width: 30,
-                     x: 100)
-archer = Character.new("./sprites/wolf.png",
-                       clip_width: 32,
-                       time: 200,
-                       x: 50)
-rifleman = Character.new("./sprites/rifleman_old.png",
-                         clip_width: 22)
-
-archer.play
-rifleman.play
-wolf.play
-
-show
+game = Game.new(background: BACKGROUND)
+game.start
