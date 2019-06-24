@@ -1,12 +1,12 @@
-require 'ruby2d'
+require "ruby2d"
+require_relative "./character.rb"
+require_relative "./game.rb"
+require_relative "./topbar.rb"
 
-set title: "Hello Triangle"
+TITLE = "Wolves"
+WIDTH = 1024
+HEIGHT = 768
+BACKGROUND = "olive"
 
-Triangle.new(
-  x1: 320, y1:  50,
-  x2: 540, y2: 430,
-  x3: 100, y3: 430,
-  color: ['red', 'green', 'blue']
-)
-
-show
+game = Game::new(title: TITLE, width: WIDTH, height: HEIGHT, background: BACKGROUND)
+game.start
