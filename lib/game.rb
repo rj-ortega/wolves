@@ -1,9 +1,11 @@
 class Game
-  def initialize(title:, width:, height:, background:)
+  def initialize(title:, width:, height:, background:, money: 100, score: 0)
     @title = title
     @width = width
     @height = height
     @background = background
+    @money = money
+    @score = score
   end
 
   def paint
@@ -13,8 +15,21 @@ class Game
   def start
     paint
     Character::place_rifleman(0, 0)
-    topbar = Topbar::new width: @width
-    topbar.paint
+    @topbar = Topbar::new width: @width
+    @topbar.paint
+    update_money_score
     Window::show
+  end
+
+  def update_money_score
+    t = Time.now
+    Window::update do
+      if Time.now - t > 2
+        @topbar.display_money_score(@score, @money)
+        t = Time.now
+        @score += 50
+        @money += 20
+      end
+    end
   end
 end

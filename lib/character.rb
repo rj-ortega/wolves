@@ -15,7 +15,7 @@ class Character
 
   def self.place_wolf(x, y)
     wolf = Sprite.new(
-      "./sprites/wolf.png",
+      "./assets/sprites/wolf.png",
       clip_width: 30,
       width: 80,
       height: 80,
@@ -29,7 +29,7 @@ class Character
 
   def self.place_rifleman(x, y)
     rifleman = Sprite.new(
-      "./sprites/rifleman_old.png",
+      "./assets/sprites/rifleman_old.png",
       clip_width: 22,
       width: 80,
       height: 80,
@@ -43,7 +43,7 @@ class Character
 
   def self.place_archer(x, y)
     archer = Sprite.new(
-      "./sprites/archer.png",
+      "./assets/sprites/archer.png",
       clip_width: 32,
       width: 80,
       height: 80,
