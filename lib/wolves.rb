@@ -2,6 +2,7 @@ require "ruby2d"
 require_relative "./character.rb"
 require_relative "./game.rb"
 require_relative "./topbar.rb"
+require_relative "./board.rb"
 
 module Wolves
   TITLE = "Wolves"

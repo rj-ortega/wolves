@@ -6,6 +6,7 @@ class Game
     @background = background
     @money = money
     @score = score
+    @topbar_height = 108
   end
 
   def paint
@@ -15,8 +16,10 @@ class Game
   def start
     paint
     Character::place_rifleman(0, 0)
-    @topbar = Topbar::new width: @width
+    @topbar = Topbar::new width: @width, height: @topbar_height
     @topbar.paint
+    @board = Board::new width: @width, height: @topbar_height
+    @board.paint
     update_money_score
     Window::show
   end
