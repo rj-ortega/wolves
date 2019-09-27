@@ -11,6 +11,13 @@
 `bundle install`
 `ruby ./bin/wolves`
 
+### Controls
+
+- `up` and `down` arrows to select different rows
+- `a` to place archer
+- `r` to place rifleman
+- `d` to remove character
+
 ## Tests
 
 `bundle exec rspec`
