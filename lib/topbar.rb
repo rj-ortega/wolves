@@ -1,9 +1,10 @@
 class Topbar
-  def initialize(width: 100)
+  def initialize(width: 100, height:)
     @width = width
+    @height = height
     @money = Text.new(
       "100",
-      x: 50, y: 55,
+      x: 50, y: 60,
       font: "./assets/fonts/roboto.ttf",
       size: 20,
       color: "black",
@@ -11,7 +12,7 @@ class Topbar
     )
     @score = Text.new(
       "%09d" % 0,
-      x: 870, y: 55,
+      x: 870, y: 60,
       font: "./assets/fonts/roboto.ttf",
       size: 20,
       color: "black",
@@ -19,7 +20,7 @@ class Topbar
     )
     @money_head = Text.new(
       "Money",
-      x: 50, y: 20,
+      x: 50, y: 25,
       font: "./assets/fonts/roboto.ttf",
       size: 20,
       color: "black",
@@ -27,7 +28,7 @@ class Topbar
     )
     @score_head = Text.new(
       "Score",
-      x: 920, y: 20,
+      x: 920, y: 25,
       font: "./assets/fonts/roboto.ttf",
       size: 20,
       color: "black",
@@ -38,7 +39,7 @@ class Topbar
   def paint
     Rectangle.new(
       x: 0, y: 0,
-      width: @width, height: 100,
+      width: @width, height: @height,
       color: "teal",
       z: 20,
     )
