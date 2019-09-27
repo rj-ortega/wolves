@@ -15,7 +15,6 @@ class Game
 
   def start
     paint
-    Character::place_rifleman(0, 0)
     @topbar = Topbar::new width: @width, height: @topbar_height
     @topbar.paint
     @board = Board::new width: @width, height: @topbar_height

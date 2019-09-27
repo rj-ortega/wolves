@@ -25,23 +25,25 @@ class Character
       y: y,
     )
     wolf.play
+    wolf
   end
 
-  def self.place_rifleman(x, y)
+  def self.place_rifleman(y)
     rifleman = Sprite.new(
       "./assets/sprites/rifleman_old.png",
       clip_width: 22,
-      width: 80,
-      height: 80,
+      width: 60,
+      height: 60,
       time: 150,
       loop: true,
-      x: x,
-      y: y,
+      x: 18,
+      y: y + 35,
     )
     rifleman.play
+    rifleman
   end
 
-  def self.place_archer(x, y)
+  def self.place_archer(y)
     archer = Sprite.new(
       "./assets/sprites/archer.png",
       clip_width: 32,
@@ -49,10 +51,11 @@ class Character
       height: 80,
       time: 150,
       loop: true,
-      x: x,
-      y: y,
+      x: 10,
+      y: y + 20,
     )
     archer.play
+    archer
   end
 
   def play

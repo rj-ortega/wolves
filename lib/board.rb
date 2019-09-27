@@ -6,6 +6,7 @@ class Board
     @current_position = 0
     @lines = 5
     @box = []
+    @characters = []
   end
   def paint
     self.handle_input
@@ -27,7 +28,31 @@ class Board
           @current_position = @lines
         end
         self.draw_box
+      when "a"
+        self.place_character("archer")
+      when "r"
+        self.place_character("rifleman")
+      when "d"
+        self.remove_character
+      else
+        puts event.key
       end
+    end
+  end
+  def place_character(character)
+    self.remove_character
+    # TODO: check for funds and remove cost
+    if character == "archer"
+      @characters[@current_position] = Character::place_archer(@line_height + (@row_height * @current_position))
+    elsif character == "rifleman"
+      @characters[@current_position] = Character::place_rifleman(@line_height + (@row_height * @current_position))
+    end
+  end
+  def remove_character
+    current_character = @characters[@current_position]
+    if current_character
+      current_character.remove
+      # TODO: return money
     end
   end
   def draw_lines
