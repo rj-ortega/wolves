@@ -3,9 +3,9 @@ class Topbar
     @width = width
     @height = height
     @money = Text.new(
-      "100",
+      "$ 100",
       x: 50, y: 60,
-      font: "./assets/fonts/roboto.ttf",
+      font: "./assets/fonts/shojumaru.ttf",
       size: 20,
       color: "black",
       z: 30,
@@ -13,15 +13,15 @@ class Topbar
     @score = Text.new(
       "%09d" % 0,
       x: 870, y: 60,
-      font: "./assets/fonts/roboto.ttf",
+      font: "./assets/fonts/shojumaru.ttf",
       size: 20,
       color: "black",
       z: 30,
     )
     @money_head = Text.new(
-      "Money",
+      "Moneys",
       x: 50, y: 25,
-      font: "./assets/fonts/roboto.ttf",
+      font: "./assets/fonts/shojumaru.ttf",
       size: 20,
       color: "black",
       z: 30,
@@ -29,7 +29,7 @@ class Topbar
     @score_head = Text.new(
       "Score",
       x: 920, y: 25,
-      font: "./assets/fonts/roboto.ttf",
+      font: "./assets/fonts/shojumaru.ttf",
       size: 20,
       color: "black",
       z: 30,
