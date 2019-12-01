@@ -13,7 +13,8 @@ class Character
     )
   end
 
-  def self.place_wolf(x, y)
+  # removed x: x and argument x for now
+  def self.place_wolf(y)
     wolf = Sprite.new(
       "./assets/sprites/wolf.png",
       clip_width: 30,
@@ -21,8 +22,8 @@ class Character
       height: 80,
       time: 100,
       loop: true,
-      x: x,
-      y: y,
+      x: 15,
+      y: y+10,
     )
     wolf.play
     wolf

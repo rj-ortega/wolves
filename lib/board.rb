@@ -30,6 +30,8 @@ class Board
         self.draw_box
       when "a"
         self.place_character("archer")
+      when "w"
+        self.place_character("wolf")
       when "r"
         self.place_character("rifleman")
       when "d"
@@ -46,6 +48,8 @@ class Board
       @characters[@current_position] = Character::place_archer(@line_height + (@row_height * @current_position))
     elsif character == "rifleman"
       @characters[@current_position] = Character::place_rifleman(@line_height + (@row_height * @current_position))
+    elsif character == "wolf"
+      @characters[@current_position] = Character::place_wolf(@line_height + (@row_height * @current_position))
     end
   end
   def remove_character
