@@ -7,6 +7,8 @@ class Game
     @money = money
     @score = score
     @topbar_height = 108
+    @wolves = []
+    @last_placed_wolf = nil
   end
 
   def paint
@@ -19,19 +21,49 @@ class Game
     @topbar.paint
     @board = Board::new width: @width, height: @topbar_height
     @board.paint
-    update_money_score
+    update(@board)
     Window::show
   end
 
   def update_money_score
-    t = Time.now
+    @topbar.display_money_score(@score, @money)
+    @score += 50
+    @money += 20
+  end
+
+  def spawn_wolf(board)
+    random_position = rand(board.lines + 1)
+    while random_position == @last_placed_wolf
+      random_position = rand(board.lines + 1)
+    end
+    @last_placed_wolf = random_position
+    @wolves << Character::place_wolf(board.line_height + (board.row_height * random_position))
+  end
+
+  def update(board)
+    spawn_time = Time.now
+    money_time = Time.now
+    move_time = Time.now
     Window::update do
-      if Time.now - t > 2
-        @topbar.display_money_score(@score, @money)
-        t = Time.now
-        @score += 50
-        @money += 20
+      if Time.now - move_time > 0.1
+        move_time = Time.now
+        move_wolves
       end
+      if Time.now - money_time > 2
+        money_time = Time.now
+        update_money_score
+      end
+      if Time.now - spawn_time > 3
+        spawn_time = Time.now
+        spawn_wolf(board)
+      end
+    end
+  end
+
+  def move_wolves
+    @wolves.each do |wolf|
+      wolf.x = wolf.x - 3
+      puts wolf.health
     end
   end
 end
