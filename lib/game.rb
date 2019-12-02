@@ -48,6 +48,11 @@ class Game
     money_time = Time.now
     move_time = Time.now
     Window::update do
+      board.characters.each_with_index do |character, index|
+        if character != nil && @wolves[index] != nil && @wolves[index][0] != nil
+          character.shoot(@wolves[index][0])
+        end
+      end
       if Time.now - move_time > 0.1
         move_time = Time.now
         move_wolves
@@ -66,7 +71,11 @@ class Game
   def move_wolves
     @wolves.each do |row|
       if row != nil
-        row.each do |wolf|
+        row.each_with_index do |wolf, index|
+          if wolf.health <= 0
+            wolf.remove
+            row.delete_at(index)
+          end
           wolf.x = wolf.x - 3
           puts wolf.health
         end

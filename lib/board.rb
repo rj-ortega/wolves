@@ -1,5 +1,5 @@
 class Board
-  attr_reader :lines, :row_height, :line_height
+  attr_reader :lines, :row_height, :line_height, :characters
 
   def initialize(width:, height:)
     @row_width = width

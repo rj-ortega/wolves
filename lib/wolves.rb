@@ -3,6 +3,7 @@ require_relative "./character.rb"
 require_relative "./game.rb"
 require_relative "./topbar.rb"
 require_relative "./board.rb"
+require_relative "./human.rb"
 
 module Wolves
   TITLE = "Wolves"

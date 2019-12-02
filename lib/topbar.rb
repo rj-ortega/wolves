@@ -47,6 +47,6 @@ class Topbar
 
   def display_money_score(score, money)
     @score.text = "%09d" % score
-    @money.text = money
+    @money.text = "$ #{money}"
   end
 end
