@@ -20,7 +20,7 @@ Wolves is a 2D cli game currently in development using Ruby
 
 ### > Demo
 
-![GIF](/images/projects/wolves.gif)
+![GIF](assets/wolves.gif)
 
 ### > Tests
 
