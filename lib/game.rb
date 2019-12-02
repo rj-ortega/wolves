@@ -37,7 +37,10 @@ class Game
       random_position = rand(board.lines + 1)
     end
     @last_placed_wolf = random_position
-    @wolves << Character::place_wolf(board.line_height + (board.row_height * random_position))
+    if @wolves[random_position] == nil
+      @wolves[random_position] = []
+    end
+    @wolves[random_position] << Character::place_wolf(board.line_height + (board.row_height * random_position))
   end
 
   def update(board)
@@ -61,9 +64,13 @@ class Game
   end
 
   def move_wolves
-    @wolves.each do |wolf|
-      wolf.x = wolf.x - 3
-      puts wolf.health
+    @wolves.each do |row|
+      if row != nil
+        row.each do |wolf|
+          wolf.x = wolf.x - 3
+          puts wolf.health
+        end
+      end
     end
   end
 end
