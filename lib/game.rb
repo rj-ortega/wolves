@@ -9,17 +9,62 @@ class Game
     @topbar_height = 108
     @wolves = []
     @last_placed_wolf = nil
+    @title_text = nil
+    @controls = nil
+    @started = false
   end
 
   def paint
     Window::set background: @background, width: @width, height: @height, title: @title
   end
 
+  def intro
+    @board = Board::new width: @width, height: @topbar_height
+    handle_input
+    Window::set background: 'teal', width: @width, height: @height, title: @title
+    displayTitle
+    displayControls
+    Window::show
+  end
+
+  def handle_input
+    Window::on :key_down do |event|
+      case event.key
+      when "up"
+        if @started
+          @board.handle_up
+        end
+      when "down"
+        if @started
+          @board.handle_down
+        end
+      when "a"
+        if @started
+          @board.place_character("archer")
+        end
+      when "r"
+        if @started
+          @board.place_character("rifleman")
+        end
+      when "d"
+        if @started
+          @board.remove_character
+        end
+      when "space"
+        if !@started
+          @started = true
+          start
+        end
+      end
+    end
+  end
+
   def start
+    @title_text.remove
+    @controls.remove
     paint
     @topbar = Topbar::new width: @width, height: @topbar_height
     @topbar.paint
-    @board = Board::new width: @width, height: @topbar_height
     @board.paint
     update(@board)
     Window::show
@@ -77,9 +122,28 @@ class Game
             row.delete_at(index)
           end
           wolf.x = wolf.x - 3
-          puts wolf.health
         end
       end
     end
+  end
+  def displayTitle
+    @title_text= Text.new(
+      @title,
+      x: 400, y: 200,
+      font: "./assets/fonts/shojumaru.ttf",
+      size: 50,
+      color: "black",
+      z: 30,
+    )
+  end
+  def displayControls
+    @controls = Text.new(
+      '(hit SPACE to start)',
+      x: 385, y: 300,
+      font: "./assets/fonts/shojumaru.ttf",
+      size: 20,
+      color: "black",
+      z: 30,
+    )
   end
 end
