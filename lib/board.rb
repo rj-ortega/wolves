@@ -11,35 +11,23 @@ class Board
     @characters = []
   end
   def paint
-    self.handle_input
     self.draw_lines
     self.draw_box
   end
-  def handle_input
-    Window::on :key_down do |event|
-      case event.key
-      when "up"
-        @current_position -= 1
-        if @current_position < 0
-          @current_position = 0
-        end
-        self.draw_box
-      when "down"
-        @current_position += 1
-        if @current_position > @lines
-          @current_position = @lines
-        end
-        self.draw_box
-      when "a"
-        self.place_character("archer")
-      when "r"
-        self.place_character("rifleman")
-      when "d"
-        self.remove_character
-      else
-        puts event.key
-      end
+
+  def handle_up
+    @current_position -= 1
+    if @current_position < 0
+      @current_position = 0
     end
+    self.draw_box
+  end
+  def handle_down
+    @current_position += 1
+    if @current_position > @lines
+      @current_position = @lines
+    end
+    self.draw_box
   end
   def place_character(character)
     self.remove_character

@@ -14,7 +14,7 @@ module Wolves
   class CLI
     def self.start
       game = Game::new(title: TITLE, width: WIDTH, height: HEIGHT, background: BACKGROUND)
-      game.start
+      game.intro
     end
   end
 
